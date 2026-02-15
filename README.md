@@ -1,2 +1,1 @@
-# score.python
-python score board exemple
+wizard genareter for mounter code to past on power automate
