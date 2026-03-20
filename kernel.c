@@ -5820,18 +5820,25 @@ void test(uint32_t r0, uint32_t r1, uint32_t atags)
 	int d=0;
 	int e=0;
 	int f=0;
-        int n=0;
 	char color=0xf;
-	
+	struct control scr;
+        //test(r0,r1,atags);
 	uart_init(2);
-	
-        randomizes=(int*)0x8000;
-	randomizes2=0;
-	memorys=0x04100008+640*480*2;
-	fbp=(uint16_t * )0x3c100000;
-        for(n=0;n<640*480;n++)*((uint16_t *)(fbp + n)) = 0xffff;
-        uart_puts("\ec\e[40;37m\nhello from raspberry os!\r\n");
-	delay(29000);	
+	uart_puts("\ec\e[47;30m\nscreen!\r\n");
+        delay(29000);
+	startX();
+	img1=creatImage(32,32);
+	bodys=img1+3;
+			
+				scr.x=0;
+				scr.y=0;
+				scr.w=639;
+				scr.h=479;
+				grid(scr,16,0,15,0);
+				gputs(20,240,255,255,255,"hello world.....");
+
+			for(a=0;a<31;a++)iline(a,0,a,31,img1,255,255,255);
+				putImage(10,10,img1);		
 	
 
 	while (1)
